@@ -5,8 +5,8 @@ services:
     image: nginx:alpine
     container_name: file-server-nginx
     ports:
-      - "4040:80"
-      - "4043:443"
+      - "4040:3080"
+      - "4043:3443"
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf
       - ./nginx/ssl:/etc/nginx/ssl
