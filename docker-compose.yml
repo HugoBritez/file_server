@@ -27,7 +27,7 @@ services:
     environment:
       - GO_ENV=production
       - MAX_FILE_SIZE=100MB
-      - ALLOWED_ORIGINS=https://*.sofmar.com.py,https://*.gaesa.com.py
+      - ALLOWED_ORIGINS=https://*.sofmar.com.py,https://*.gaesa.com.py,https://meta-microservice-19rg.onrender.com
       - JWT_SECRET=${JWT_SECRET}
       - DEFAULT_CLIENT=shared
       - PORT=3000
