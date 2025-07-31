@@ -61,3 +61,4 @@ type HealthResponse struct {
 	Uptime  string            `json:"uptime,omitempty"`
 	Stats   map[string]interface{} `json:"stats,omitempty"`
 }
+

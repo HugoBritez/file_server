@@ -13,7 +13,7 @@ http://localhost:4040/api/files/
 Para clientes que requieren autenticación, incluir en headers:
 ```javascript
 {
-  "Authorization": "Bearer YOUR_JWT_TOKEN",
+  "Authorization": "Bearer TOKEN",
   "X-Client-Id": "acricolor" // ID del cliente
 }
 ```

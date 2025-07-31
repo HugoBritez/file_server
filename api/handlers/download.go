@@ -183,6 +183,27 @@ func findFileByID(fileID, clientID, storagePath string) (*models.FileMetadata, e
 		originalName = "file" + extension
 	}
 
+	// Detectar MIME type basado en la extensión
+	mimeType := "application/octet-stream" // default
+	switch strings.ToLower(extension) {
+	case ".png":
+		mimeType = "image/png"
+	case ".jpg", ".jpeg":
+		mimeType = "image/jpeg"
+	case ".gif":
+		mimeType = "image/gif"
+	case ".pdf":
+		mimeType = "application/pdf"
+	case ".txt":
+		mimeType = "text/plain"
+	case ".doc", ".docx":
+		mimeType = "application/msword"
+	case ".xls", ".xlsx":
+		mimeType = "application/vnd.ms-excel"
+	case ".zip":
+		mimeType = "application/zip"
+	}
+
 	// Crear metadata básica
 	metadata := &models.FileMetadata{
 		FileID:       fileID,
@@ -191,6 +212,7 @@ func findFileByID(fileID, clientID, storagePath string) (*models.FileMetadata, e
 		Client:       clientID,
 		Size:         stat.Size(),
 		Extension:    extension,
+		MimeType:     mimeType,
 		Path:         filePath,
 		URL:          fmt.Sprintf("/static/%s/%s", clientID, fileName),
 	}

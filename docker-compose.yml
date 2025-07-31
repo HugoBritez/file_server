@@ -2,13 +2,12 @@ version: '3.8'
 
 services:
   nginx:
-    image: nginx:alpine
+    build: ./nginx
     container_name: file-server-nginx
     ports:
-      - "4040:3080"
-      - "4043:3443"
+      - "4040:4040"
+      - "4043:4043"
     volumes:
-      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
       - ./nginx/ssl:/etc/nginx/ssl
       - ./uploads:/var/www/static
       - ./frontend:/var/www/frontend
@@ -31,8 +30,8 @@ services:
       - ALLOWED_ORIGINS=${ALLOWED_ORIGINS}
       - JWT_SECRET=${JWT_SECRET}
       - DEFAULT_CLIENT=${DEFAULT_CLIENT:-shared}
-      - USER=${USER:-Sofmar}
-      - PASSWORD=${PASSWORD:-s17052006}
+      - USER=Sofmar
+      - PASSWORD=s17052006
       - PORT=3000
     networks:
       - file-server-network

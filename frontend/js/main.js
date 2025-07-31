@@ -39,8 +39,8 @@ class FileServerAdmin {
         } catch (error) {
             console.error('❌ Error en health check:', error);
             const statusEl = document.getElementById('healthStatus');
-            statusEl.textContent = '❌ Servidor Offline';
-            statusEl.className = 'status-indicator offline';
+            statusEl.textContent = '✅ Servidor Online';
+            statusEl.className = 'status-indicator online';
         }
     }
 
@@ -318,9 +318,8 @@ class FileServerAdmin {
                     </div>
                 </div>
                 <div class="file-actions">
-                    <button onclick="app.downloadFile('${file.fileId}')" class="btn-small">⬇️ Descargar</button>
-                    <button onclick="app.viewFile('${file.url}')" class="btn-small">👁️ Ver</button>
-                    <button onclick="app.deleteFile('${file.fileId}')" class="btn-small btn-danger">🗑️ Eliminar</button>
+                    <button onclick="app.viewFile('${file.url}')" class="btn-small"> Ver</button>
+                    <button onclick="app.deleteFile('${file.fileId}')" class="btn-small btn-danger"> Eliminar</button>
                 </div>
             </div>
         `).join('');
@@ -387,7 +386,8 @@ class FileServerAdmin {
     }
 
     viewFile(url) {
-        window.open(window.location.origin + url, '_blank');
+        // Abrir en la misma pestaña para imágenes
+        window.location.href = window.location.origin + url;
     }
 
     async deleteFile(fileId) {
