@@ -14,6 +14,8 @@ type Config struct {
 	JWTSecret      string
 	Environment    string
 	DefaultClient  string
+	AdminUser      string
+	AdminPassword  string
 }
 
 func Load() *Config {
@@ -43,6 +45,8 @@ func Load() *Config {
 		JWTSecret:      getEnv("JWT_SECRET", "default_secret_change_in_production"),
 		Environment:    getEnv("GO_ENV", "development"),
 		DefaultClient:  getEnv("DEFAULT_CLIENT", "shared"),
+		AdminUser:      getEnv("USER", "admin"),
+		AdminPassword:  getEnv("PASSWORD", "admin123"),
 	}
 }
 

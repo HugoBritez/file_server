@@ -26,11 +26,14 @@ func main() {
 
 	// API Routes
 	api := r.PathPrefix("/api").Subrouter()
-	api.Use(middleware.ClientValidation())
-	api.Use(middleware.JWTAuth()) // 🔐 Autenticación JWT por cliente
 
-	// File endpoints
+	// Auth endpoint (sin autenticación)
+	api.HandleFunc("/login", handlers.Login).Methods("POST")
+
+	// File endpoints (con autenticación)
 	files := api.PathPrefix("/files").Subrouter()
+	files.Use(middleware.ClientValidation())
+	files.Use(middleware.JWTAuth()) // 🔐 Autenticación JWT
 	files.HandleFunc("/upload", handlers.UploadFile).Methods("POST")
 	files.HandleFunc("/download/{fileId}", handlers.DownloadFile).Methods("GET")
 	files.HandleFunc("/list/{client}", handlers.ListFiles).Methods("GET")

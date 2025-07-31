@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Servidor de Archivos </title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Login Section -->
+        <div id="loginSection" class="login-section">
+            <div class="login-card">
+                <h1> Servidor de Archivos</h1>
+                <h2> Iniciar Sesión</h2>
+                <p>Acceso al área de administración del cliente <strong>Sofmar</strong></p>
+                
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="username"> Usuario:</label>
+                        <input type="text" id="username" required autocomplete="username">
+                    </div>
+                    <div class="form-group">
+                        <label for="password"> Contraseña:</label>
+                        <input type="password" id="password" required autocomplete="current-password">
+                    </div>
+                    <button type="submit">Ingresar</button>
+                </form>
+                
+                <div id="loginError" class="error" style="display: none;"></div>
+            </div>
+        </div>
+
+        <!-- Header (Hidden by default) -->
+        <header id="appHeader" class="header" style="display: none;">
+            <h1> Servidor de Archivos - Cliente Sofmar</h1>
+            <div class="header-controls">
+                <span id="healthStatus" class="status-indicator"> Verificando...</span>
+                <button id="logoutBtn" class="btn-secondary"> Cerrar Sesión</button>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <div id="mainContent" style="display: none;">
+
+            <!-- Upload Section -->
+            <div class="upload-section">
+                <h3>Subir Archivo</h3>
+                <div class="upload-area" id="uploadArea">
+                    <p> Arrastra archivos aquí o haz clic para seleccionar</p>
+                    <input type="file" id="fileInput" multiple>
+                </div>
+                <div class="upload-options">
+                    <input type="text" id="folderInput" placeholder="Subcarpeta (opcional): whatsapp, documentos...">
+                </div>
+                <div id="uploadProgress" style="display: none;">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                    <span id="progressText">0%</span>
+                </div>
+            </div>
+
+            <!-- Files List -->
+            <div class="files-section">
+                <div class="files-header">
+                    <h3>Archivos</h3>
+                    <div class="files-controls">
+                        <input type="text" id="searchInput" placeholder="Buscar archivos...">
+                        <select id="folderFilter">
+                            <option value="">Todas las carpetas</option>
+                        </select>
+                        <button id="refreshFiles" class="btn-secondary"> Actualizar</button>
+                    </div>
+                </div>
+                <div id="filesList" class="files-list">
+                    <p class="loading">Cargando archivos...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
