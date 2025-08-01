@@ -161,7 +161,6 @@ const listFiles = async (clientId, options = {}) => {
       'X-Client-Id': clientId
     }
   });
-  
   return await response.json();
 };
 
